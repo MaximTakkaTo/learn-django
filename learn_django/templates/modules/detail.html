@@ -1,0 +1,19 @@
+{% extends 'index.html' %}
+
+
+ 
+{% block title %} 
+{{lesson.lesson_title}} 
+{% endblock %}
+
+{% block content %}
+    <div class="ownH1"> 
+        {{lesson.lesson_title}}
+    </div> 
+    <hr> 
+    {% autoescape off %}{{lesson.lesson_text}}{% endautoescape %}
+    <div style="margin-bottom: 76px;">
+        <a href = "#" type="button" class="btn btn-primary btn-content" style="float: left;">Назад</a>
+        <a href = "#" type="button" class="btn btn-primary btn-content" style="float: right;">Вперед</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'index.html' %}
+
+{% block titile %} Django уроки {% endblock %}
+
+{% block content %}
+
+    <div class="accordion" id="accordionExample">
+
+        {% if modules %}
+            {% for m in modules %}
+                <div class="main-head">
+                    <button class="btn btn-link module-maintext" type="button" data-toggle="collapse" data-target="#{{m.eng_tag}}" aria-expanded="true" aria-controls="{{m.eng_tag}}">
+                        {{m.module_title}}
+                    </button>
+                </div>
+                <div id="{{m.eng_tag}}" class="collapse" aria-labelledby="" data-parent="#accordionExample">
+                    <div class="btn-group-vertical" style="width: 100%;">
+                        {% if lessons %}
+                            {% for module_lessons in lessons %}
+                                {% for lesson in module_lessons %}
+                                    {% if lesson.Module == m %}
+                                        <a href = "{% url 'modules:detail' m.eng_tag lesson.eng_tag %}" class="btn module-text" style="text-align: left;">{{lesson.lesson_title}}</a>
+                                    {% endif %}     
+                                {% endfor %}
+                            {% endfor %}
+                        {% else %}
+                            Уроков нет, но вы держитесь
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            Уроков нет, питон - параша, бегите от него
+        {% endif %}
+    </div>
+{% endblock %}
