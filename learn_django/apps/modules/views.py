@@ -5,7 +5,7 @@ from .models import Module
 
 def modules(request):
     if not request.user.is_authenticated:
-        return HttpResponseRedirect(reverse('registration:signup'))
+        return HttpResponseRedirect(reverse('registration:signin'))
     else:   
         modules = Module.objects.all()
         mod = list(modules)
@@ -17,7 +17,7 @@ def modules(request):
 
 def detail(request, module_eng_tag, lesson_eng_tag):
     if not request.user.is_authenticated:
-        return HttpResponseRedirect(reverse('registration:signup'))
+        return HttpResponseRedirect(reverse('registration:signin'))
     else:
         try:
             m = Module.objects.get(eng_tag = module_eng_tag)
@@ -26,3 +26,6 @@ def detail(request, module_eng_tag, lesson_eng_tag):
 
         lesson = m.lesson_set.get(eng_tag = lesson_eng_tag)
         return render(request, 'modules/detail.html', {'lesson': lesson})
+
+def about(request):
+    return render(request, 'modules/about.html')
