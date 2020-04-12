@@ -18,7 +18,7 @@
                         {% if lessons %}
                             {% for module_lessons in lessons %}
                                 {% for lesson in module_lessons %}
-                                    {% if lesson.Module == m %}
+                                    {% if lesson.module == m %}
                                         <a href = "{% url 'modules:detail' m.eng_tag lesson.eng_tag %}" class="btn module-text" style="text-align: left;">{{lesson.lesson_title}}</a>
                                     {% endif %}     
                                 {% endfor %}

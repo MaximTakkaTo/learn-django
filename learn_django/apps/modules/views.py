@@ -7,11 +7,10 @@ def modules(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse('registration:signin'))
     else:   
-        modules = Module.objects.all()
-        mod = list(modules)
+        modules = Module.objects.order_by('module_id')
         lessons = []
-        for m in mod:
-            lessons.append(m.lesson_set.all())
+        for m in modules:
+            lessons.append(m.lesson_set.order_by('lesson_id'))
         return render(request, 'modules/list.html', {'modules': modules, 'lessons' : lessons})
 
 
