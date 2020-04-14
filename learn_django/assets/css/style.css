@@ -114,3 +114,18 @@ footer {
     color: #0b1c39;
     border : none;
 }
+.btn-reg {
+    border : none;
+    color: white;
+    font-size: 18px;
+    background: #0b1c39; 
+    height: 44px;
+}
+.btn-reg:hover {
+    background: #fdb80f;
+    color: #0b1c39;
+    border : none;
+}
+.fix-size {
+    width: 25%;
+}

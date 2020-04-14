@@ -1,34 +1,68 @@
 {% extends 'index.html' %}
 
 {% block content %}
-<h2>Регистрация</h2>
-<form method="post">
-  {% csrf_token %}
-  {% for field in profile_form %}
-    <p>
-      {{ field.label_tag }}<br>
-      {{ field }}
-      {% if field.help_text %}
-      <span>{{ field.help_text }}</span>
-      {% endif %}
-      {% for error in field.errors %}
-      <p>{{ error }}</p>
-      {% endfor %}
-    </p>
-  {% endfor %}
-  {% for field in form %}
-    <p>
-      {{ field.label_tag }}<br>
-      {{ field }}
-      {% if field.help_text %}
-      <span>{{ field.help_text }}</span>
-      {% endif %}
-      {% for error in field.errors %}
-      <p>{{ error }}</p>
-      {% endfor %}
-    </p>
-  {% endfor %}
-  <button type="submit">Отправить</button>
-</form>
-<p>Или <a href = "{% url 'registration:signin' %}">авторизируйтесь</a></p>
+<p class="ownH1">Регистрация</p>
+<div class="container-fluid">
+  <div class="row"> 
+    <form method="post">
+      {% csrf_token %}
+      <div style="float: left;">
+        <p>
+          {{profile_form.study_group.label_tag}} <br/>
+          {{profile_form.study_group}}
+          {% if profile_form.study_group.help_text %}
+            <small class="form-text text-muted">{{ profile_form.study_group.help_text }}</small>
+          {% endif %}
+        </p>
+        <p>
+          {{form.username.label_tag}} <br/>
+          {{form.username}}
+          {% if form.username.help_text %}
+            <small class="form-text text-muted">{{ form.username.help_text }}</small>
+          {% endif %}
+        </p>
+        <p>
+          {{form.first_name.label_tag}} <br/>
+          {{form.first_name}}
+          {% if form.first_name.help_text %}
+            <small class="form-text text-muted">{{ form.first_name.help_text }}</small>
+          {% endif %}
+        </p>
+        <p>
+          {{form.last_name.label_tag}} <br/>
+          {{form.last_name}}
+          {% if form.last_name.help_text %}
+            <small class="form-text text-muted">{{ form.last_name.help_text }}</small>
+          {% endif %}
+        </p>
+      </div>
+      <div style="float: right; padding-left: 25px;">
+        <p>
+          {{form.email.label_tag}} <br/>
+          {{form.email}}
+          {% if form.email.help_text %}
+            <small class="form-text text-muted">{{ form.email.help_text }}</small>
+          {% endif %}
+        </p>
+        <p>
+          {{form.password1.label_tag}} <br/>
+          {{form.password1}}
+          {% if form.password1.help_text %}
+            <small class="form-text text-muted">{{ form.password1.help_text }}</small>
+          {% endif %}
+        </p>
+        <p>
+          {{form.password2.label_tag}} <br/>
+          {{form.password2}}
+          {% if form.password2.help_text %}
+            <small class="form-text text-muted">{{ form.password2.help_text }}</small>
+          {% endif %}
+        </p>
+      </div>
+    </form>
+    <br/>
+  </div>
+</div>
+<button class="btn btn-primary btn-reg" type="submit" >Отправить</button>
+<p style="margin-top: 5px;">Или <a href = "{% url 'registration:signin' %}">авторизируйтесь</a></p>
 {% endblock %}

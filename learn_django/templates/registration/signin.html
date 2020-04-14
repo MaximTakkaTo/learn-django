@@ -2,7 +2,7 @@
 
 
 {% block content %}
-<h2>Авторизация</h2>
+<p class="ownH1">Авторизация</p>
 <p>Для доступа к контенту требуется авторизация<p>
 {% if error %}
     <p>{{error}}</p>
@@ -21,7 +21,7 @@
   {% endfor %}
 </p>
 {% endfor %}
-<button type="submit">Войти</button>
+<button class="btn btn-primary btn-reg" type="submit">Войти</button>
 </form>
-<p>Или <a href = "{% url 'registration:signup' %}">зарегистрируйтесь</a></p>
+<p style="margin-top: 5px;">Или <a href = "{% url 'registration:signup' %}">зарегистрируйтесь</a></p>
 {% endblock %}
